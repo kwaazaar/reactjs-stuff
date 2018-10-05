@@ -10,7 +10,6 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
     const initialContent = serverRender();
-    console.log(initialContent);
     res.render('index', { initialContent });
 });
 
