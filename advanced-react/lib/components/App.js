@@ -7,7 +7,11 @@ import ArticleList from './ArticleList';
 const api = new DataApi(data);
 
 class App extends React.Component {
-    
+
+    articleActions = {
+        lookupAuthor: a => this.state.authors[a.authorId]
+    };
+
     constructor() {
         super();
         this.state = {
@@ -19,7 +23,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <ArticleList articles={this.state.articles} authors={this.state.authors} />
+                <ArticleList articles={this.state.articles} actions={this.articleActions} />
             </div>
         );
     }
