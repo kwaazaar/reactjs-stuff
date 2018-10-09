@@ -1,7 +1,12 @@
 const path = require('path');
 
 module.exports = {
-    entry: ['babel-polyfill','./lib/components/Index.js'],
+    resolve: {
+        alias: {
+            'state-api': path.resolve(__dirname, 'lib/state-api')
+        }
+    },
+    entry: ['babel-polyfill','./lib/renderers/dom.js'],
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js'

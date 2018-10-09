@@ -1,24 +1,27 @@
 import React from 'react';
-import DataApi from '../DataApi';
-import { data } from '../testData';
+import DataApi from '../state-api';
+import axios from 'axios';
 
 import ArticleList from './ArticleList';
 
-const api = new DataApi(data);
-
 class App extends React.Component {
-
+    state = {
+        articles: this.props.initialData.articles,
+        authors: this.props.initialData.authors,
+    };
     articleActions = {
         lookupAuthor: a => this.state.authors[a.authorId]
     };
 
-    constructor() {
-        super();
-        this.state = {
-            articles: api.getArticles(),
-            authors: api.getAuthors(),
-        };
-    }
+    // // Async load of data is no longer needed, since server supplied it
+    // async componentDidMount() {
+    //     const resp = await axios.get('/data');
+    //     const api = new DataApi(resp.data);
+    //     this.setState(() => ({
+    //         articles: api.getArticles(),
+    //         authors: api.getAuthors(),
+    //     }));
+    // };
 
     render() {
         return (
